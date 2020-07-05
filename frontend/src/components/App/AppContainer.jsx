@@ -6,6 +6,8 @@ import { toggleUserDrop } from '../../actions/ui_actions';
 
 const mapStateToProps = (state, ownProps) => {
   return {
+    currentUser: state.entities.users[state.session.id],
+    modalStatus: state.ui.modal,
     userDropDownStatus: state.ui.userDropDown.status
   }
 }

@@ -11,11 +11,11 @@ const mapStateToProps = (state, ownProps) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch) => {
   return {
     toggleUserDrop: (status) => dispatch(toggleUserDrop(status)),
     logout: () => dispatch(logout()),
   }
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(UserDropDownComponent));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(UserDropDownComponent));

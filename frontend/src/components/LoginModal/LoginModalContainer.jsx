@@ -14,11 +14,11 @@ const mapStateToProps = (state, ownProps) => {
     modalTab: state.ui.formType
   }
 }
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch) => {
   return {
     loginModal: (status, formType) => dispatch(toggleLoginModal(status, formType)),
     resetErrors: () => dispatch(resetErrors())
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginModalComponent);
+export default connect(mapStateToProps, mapDispatchToProps)(LoginModalComponent);

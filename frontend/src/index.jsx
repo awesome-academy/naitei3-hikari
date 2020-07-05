@@ -3,29 +3,30 @@ import ReactDOM from "react-dom";
 import Root from './components/root';
 import configureStore from './store/store';
 import {createNewUser, login, logout} from './actions/user_actions';
-
+import { fetchCurrentUser } from './utils/utils'
 
 document.addEventListener("DOMContentLoaded", () => {
   const root = document.getElementById("root");
-  let store;
-
-  if (window.currentUser) {
-    const preloadedState = {
-      entities: {
-        users: { [window.currentUser.id]: window.currentUser },
-      },
-      session: { id: window.currentUser.id }
-    };
-    store = configureStore(preloadedState);
-    delete window.currentUser;
-  } else {
-      store = configureStore();
+  let store = configureStore(), currentUser;
+  let token = localStorage.getItem("auth_token");
+  if(token){
+    fetchCurrentUser(token).then(user => {
+      currentUser = user
+        const preloadedState = {
+          entities: {
+            users: { [currentUser.current_user.id]: currentUser.current_user },
+          },
+          session: { id: currentUser.current_user.id }
+        };
+        store = configureStore(preloadedState);
+        ReactDOM.render(<Root store={store} />, root);
+  })
   }
-
-  // window.login = login;
-  // window.logout = logout;
-  // window.getState = store.getState;
-  // window.dispatch = store.dispatch;
-
-  ReactDOM.render(<Root store={store} />, root);
+  else {
+    ReactDOM.render(<Root store={store} />, root);
+  }
+    // window.login = login;
+    // window.logout = logout;
+    
+    // window.dispatch = store.dispatch;
 });

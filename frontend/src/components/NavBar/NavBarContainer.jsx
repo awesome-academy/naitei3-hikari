@@ -8,6 +8,8 @@ import NavBarComponent from './NavBarComponent';
 
 const mapStateToProps = (state, ownProps) => {
   return {
+    currentUser: state.entities.users[state.session.id],
+    modalStatus: state.ui.modal,
     state: state,
     userDropDownStatus: state.ui.userDropDown.status,
   }

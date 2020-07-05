@@ -230,7 +230,6 @@ export class NavBarComponent extends React.Component {
             </div>
           )}
         </section>
-
         <section style={rightBarStyle}>
           {!this.props.currentUser && (
             <div
