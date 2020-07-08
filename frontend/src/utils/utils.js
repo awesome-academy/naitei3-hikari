@@ -15,6 +15,15 @@ export const fetchUserByName = (username) => {
   })
 }
 
+export const fetchCurrentUser = (token) => {
+  return $.ajax({
+    url: `${apiHost}/api/v1/current_user`,
+    method: 'GET',
+    headers: {"Authorization": 'Bearer ' + token}
+  })
+}
+
+
 export const fetchUserById = (id) => {
   return $.ajax({
     url: `${apiHost}/api/v1/users/${id}`,
@@ -32,10 +41,13 @@ export const postSession = (user) => {
 }
 
 export const deleteSession = () => {
-  return $.ajax({
-    url: `${apiHost}/api/v1/session`,
-    method: 'DELETE'
-  });
+  return new Promise((resolve, reject)=>{
+    if (localStorage.removeItem("auth_token") == undefined) {
+      resolve({status: 'Authencation Token successfully removed!'})
+    } else {
+      reject(Error('Has no Authencation Token'))
+    }
+  })
 };
 
 export const fetchUsers = (request) => {

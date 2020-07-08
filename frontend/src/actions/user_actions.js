@@ -47,17 +47,22 @@ export const createNewUser = formUser => dispatch => {
 
 export const login = formUser => dispatch => 
   postSession(formUser)
-  .then(user => dispatch(receiveCurrentUser(user)))
-  .fail(data => dispatch(receiveErrors(data)));
+  .then(user => {
+    localStorage.setItem("auth_token", user.user.auth_token)
+    dispatch(receiveCurrentUser(user))
+  })
+  .fail(data => console.log(data));
 
 export const logout = () => dispatch => 
   deleteSession()
   .then(() => dispatch(logoutCurrentUser()))
-  .fail(data => dispatch(receiveErrors(data)));
+  .catch(data => dispatch(receiveErrors(data)));
 
 export const getUserByName = (username) => dispatch => 
   fetchUserByName(username)
-  .then((user) => dispatch(receiveUser(user)))
+  .then((user) => {
+    dispatch(receiveUser(user))
+  })
   .fail(data => dispatch(receiveNoUserErrors(data)));
 
 export const getUserById = (id) => dispatch => 

@@ -14,5 +14,4 @@ const configureStore = (preloadedState = {}) => {
     applyMiddleware(...middleware)
   );
 };
-
 export default configureStore;
