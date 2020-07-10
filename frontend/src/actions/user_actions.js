@@ -60,9 +60,7 @@ export const logout = () => dispatch =>
 
 export const getUserByName = (username) => dispatch => 
   fetchUserByName(username)
-  .then((user) => {
-    dispatch(receiveUser(user))
-  })
+  .then((user) => dispatch(receiveUser(user)))
   .fail(data => dispatch(receiveNoUserErrors(data)));
 
 export const getUserById = (id) => dispatch => 

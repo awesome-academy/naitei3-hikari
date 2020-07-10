@@ -32,6 +32,7 @@ export class IndexComponent extends React.Component {
     };
 
     this.props.getUsers(request).then(action => {
+      console.log(action)
       let users = Object.values(action.users);
       this.shuffle(users);
       this.setState({

@@ -1,9 +1,9 @@
 class Api::V1::UsersController < ApplicationController
   skip_before_action :authenticate_request
   before_action :load_user, only: :show
-  before_action :convert_to_date_of_birth, :log_in, only: :create
+  before_action :convert_to_date_of_birth, :sign_up, only: :create
   def index
-    @users = User.all
+    @users = User.lastest
     render json: @users
   end
 
@@ -34,7 +34,7 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def load_user
-    @user = User.find_by id: params[:id]
+    @user = User.find_by username: params[:username]
     return unless @user
   end
 
