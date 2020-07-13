@@ -18,6 +18,9 @@ export const getCategoriesInfo = request => dispatch => {
 }
 
 export const getCategory = title => dispatch => {
+  console.log(title)
   return fetchCategory(title)
-    .then(info => dispatch(receiveCategory(info)))
+    .then(info => {
+      return dispatch(receiveCategory(info))
+    })
 }

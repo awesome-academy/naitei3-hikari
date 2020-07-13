@@ -9,6 +9,7 @@ const categoriesReducer = (state = {}, action) => {
       newState = Object.assign({}, action.info);
       return newState;
     case RECEIVE_CATEGORY:
+      console.log(action)
       newState = Object.assign({}, state);
       const title = action.info['title'];
       delete newState[action.info['title']];

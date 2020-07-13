@@ -6,4 +6,5 @@ class Category < ApplicationRecord
     source_type: "Stream", dependent: :destroy
   has_many :users, through: :media, source: :object,
     source_type: "User", dependent: :destroy
+  scope :lastest, ->{order created_at: DESC}
 end
