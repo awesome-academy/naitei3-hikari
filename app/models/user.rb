@@ -8,5 +8,5 @@ class User < ApplicationRecord
   has_many :followers, through: :followees,
     source: :follower, dependent: :destroy
   has_secure_password
-  scope :lastest, ->{where("picture != 'NULL'").order(created_at: 'DESC')}
+  scope :lastest, ->{where.not(picture: nil).order created_at: :desc}
 end

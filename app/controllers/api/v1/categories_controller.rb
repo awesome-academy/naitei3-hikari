@@ -1,9 +1,10 @@
 class Api::V1::CategoriesController < ApplicationController
   skip_before_action :authenticate_request
+  before_action :format_categories, only: :index
   before_action :load_category, only: :show
 
   def index
-    @categories = Category.lastest
+    render json: @format_categories
   end
 
   def show; end
@@ -17,6 +18,18 @@ class Api::V1::CategoriesController < ApplicationController
     @users = @category.users
     @category = format_category @category, @users
     render json: @category
+  end
+
+  def format_categories
+    @format_categories = {}
+    @categories = Category.lastest
+    return if @categories.none?
+
+    @categories.each do |category|
+      @format_categories[category.title] =
+        format_category(category, category.users)
+    end
+    @format_categories
   end
 
   def format_category category, users
