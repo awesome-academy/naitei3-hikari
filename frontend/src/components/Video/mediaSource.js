@@ -1,28 +1,27 @@
-import Hls from 'hls.js';
+// const videoTag = document.getElementById('videoTag');
+// const mediaSource = new MediaSource();
+// const url = URL.createObjectURL(mediaSource);
+// videoTag.src = URL.createObjectURL(mediaSource);
+
+// const videoSourceBuffer = myMediaSource
+//   .addSourceBuffer('video/mp4; codecs="avc1.64001e"')
+import flvjs from 'flv.js';
 import sources from './videoSources.json';
 
-const startup = (user, streamKey, cb, demo) => {
+const startup = (user, streamKey, cb) => {
   let attemptNum = 0;
   let timeout = null;
 
   const videoTag = document.getElementById('videoTag');
-  if (Hls.isSupported()) {
-    let hls = new Hls({ enableWorker: false });
-    hls.attachMedia(videoTag);
-    hls.on(Hls.Events.MEDIA_ATTACHED, function() {
-      //Add hls.loadSource her;
-      const attempt = () => {
-        hls.loadSource(`https://ryan-sabik-bucket.s3-us-west-1.amazonaws.com/Poker/index.m3u8`);
-      };
-      hls.on(Hls.Events.MANIFEST_PARSED, (event, data) => {
-        if (videoTag != undefined) {
-          videoTag.play();
-          cb(true);
-        }
-      });
-      attempt();
+  if (flvjs.isSupported()) {
+    var flvPlayer = flvjs.createPlayer({
+        type: 'flv',
+        url: `http://localhost:8000/live/${streamKey}.flv`
     });
-  }
+    flvPlayer.attachMediaElement(videoTag);
+    flvPlayer.load();
+    flvPlayer.play();
+}
 };
 
 export default startup;

@@ -16,6 +16,7 @@ class Api::V1::UsersController < ApplicationController
 
   def sign_up
     @user = User.new user_params
+    @user.build_stream.key = SecureRandom.hex(20)
     @user.update date_of_birth: @date
     return unless @user
 

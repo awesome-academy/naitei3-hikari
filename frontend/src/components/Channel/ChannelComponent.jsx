@@ -211,9 +211,7 @@ export class ChannelComponent extends React.Component {
 
     let displayFollowButtonText = true;
     if (
-      this.props.currentUser &&
-      this.props.follows.currentChannel[this.props.currentUser.id]
-    ) {
+      this.props.currentUser     ) {
       displayFollowButtonText = false;
       followButtonId = 'followButtonSmall';
       followButton['width'] = '43px';
