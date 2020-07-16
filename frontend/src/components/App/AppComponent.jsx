@@ -1,7 +1,8 @@
 import React from 'react';
-import NavBarContainer from '../NavBar/NavBarContainer';
-import MainBarContainer from '../MainBar/MainBarContainer';
 import LoginModalContainer from '../LoginModal/LoginModalContainer';
+import NavBarContainer from '../NavBar/NavBarContainer';
+import SideBarContainer from '../SideBar/SideBarContainer';
+import MainBarContainer from '../MainBar/MainBarContainer';
 import UserDropDownContainer from '../UserDropDown/UserDropDownContainer';
 
 export class AppComponent extends React.Component { 
@@ -36,10 +37,11 @@ export class AppComponent extends React.Component {
 
     return (
       <div style={base} onClick={this.toggleUserDrop} id="base"> 
-      {this.props.modalStatus         && <LoginModalContainer /> }
-      {this.props.userDropDownStatus  && <UserDropDownContainer />}
+        {this.props.modalStatus         && <LoginModalContainer /> }
+        {this.props.userDropDownStatus  && <UserDropDownContainer />}
         <NavBarContainer />
         <div style={MainDiv} id="mainAppComp">
+          <SideBarContainer />
           <MainBarContainer />
         </div>
       </div>  

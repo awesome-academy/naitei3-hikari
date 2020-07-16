@@ -30,12 +30,12 @@ export class ChannelComponent extends React.Component {
         .getUserByName(nextProps.match.params.username)
         .then(action => {
           this.sendObj = Object.assign({}, action.user);
-          console.log('ok')
+          this.sendObj.follow = 'followee';
+          this.props.showFollows(this.sendObj);
           this.props.receiveChannel(action.user.id);
         })
-        .fail((err) => {
-          console.log('loi cmnr')
-          console.log(err)
+        .fail(() => {
+          this.props.history.push(`/`);
         });
     }
   }
@@ -44,12 +44,12 @@ export class ChannelComponent extends React.Component {
     this.props
       .getUserByName(this.props.match.params.username)
       .then(action => {
-        console.log(action)
         this.sendObj = Object.assign({}, action.user);
+        this.sendObj.follow = 'followee';
+        this.props.showFollows(this.sendObj);
         this.props.receiveChannel(action.user.id);
       })
-      .fail((err) => {
-        console.log(err)
+      .fail(() => {
         this.props.history.push(`/`);
       });
   }
@@ -211,7 +211,9 @@ export class ChannelComponent extends React.Component {
 
     let displayFollowButtonText = true;
     if (
-      this.props.currentUser     ) {
+      this.props.currentUser &&
+      this.props.follows.currentChannel[this.props.currentUser.id]
+    ) {
       displayFollowButtonText = false;
       followButtonId = 'followButtonSmall';
       followButton['width'] = '43px';
@@ -262,7 +264,7 @@ export class ChannelComponent extends React.Component {
             >
               <div style={followText}>Followers</div>
               <div style={numberText}>
-                0
+                {this.props.channelFollowers.length || 0}
               </div>
             </div>
             <div
@@ -272,7 +274,7 @@ export class ChannelComponent extends React.Component {
             >
               <div style={followText}>Following</div>
               <div style={numberText}>
-               0
+                {this.props.channelFollowings.length || 0}
               </div>
             </div>
           </div>
