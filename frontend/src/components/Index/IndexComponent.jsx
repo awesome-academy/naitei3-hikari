@@ -25,7 +25,12 @@ export class IndexComponent extends React.Component {
 
     return array;
   }
-
+  handleImage = (picture) =>{
+    if(picture == null){
+      return "https://lehoanglan.s3-ap-northeast-1.amazonaws.com/Hikari/images/33db51b709c04b279a1826b3bbf0faf2.png"
+    }
+    return picture
+  }
   componentDidMount() {
     const request = {
       all: true
@@ -212,12 +217,12 @@ export class IndexComponent extends React.Component {
           >
             <div className="backgroundImageForIndex">
               <div style={regularIcon}>
-                <img style={regularIcon} src={user.picture}></img>
+                <img style={regularIcon} src={this.handleImage(user.picture)}></img>
               </div>
             </div>
             <div style={bottomStyle}>
               <div style={miniIcon}>
-                <img style={miniIcon} src={user.picture}></img>
+                <img style={miniIcon} src={this.handleImage(user.picture)}></img>
               </div>
               <div style={infoStyle}>
                 <div style={streamTitle}>{user.stream_title}</div>
@@ -238,12 +243,12 @@ export class IndexComponent extends React.Component {
           >
             <div className="backgroundImageForIndex">
               <div style={regularIcon}>
-                <img style={regularIcon} src={user.picture}></img>
+                <img style={regularIcon} src={this.handleImage(user.picture)}></img>
               </div>
             </div>
             <div style={bottomStyle}>
               <div style={miniIcon}>
-                <img style={miniIcon} src={user.picture}></img>
+                <img style={miniIcon} src={this.handleImage(user.picture)}></img>
               </div>
               <div style={infoStyle}>
                 <div style={streamTitle}>{user.stream_title}</div>
@@ -264,12 +269,12 @@ export class IndexComponent extends React.Component {
           >
             <div className="backgroundImageForIndex">
               <div style={regularIcon}>
-                <img style={regularIcon} src={user.picture}></img>
+                <img style={regularIcon} src={this.handleImage(user.picture)}></img>
               </div>
             </div>
             <div style={bottomStyle}>
               <div style={miniIcon}>
-                <img style={miniIcon} src={user.picture}></img>
+                <img style={miniIcon} src={this.handleImage(user.picture)}></img>
               </div>
               <div style={infoStyle}>
                 <div style={streamTitle}>{user.stream_title}</div>

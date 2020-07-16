@@ -1,6 +1,6 @@
 import React from 'react';
 import './effects.css';
-
+import SearchContainer from '../SearchBar/SearchContainer'
 export class NavBarComponent extends React.Component {
   constructor(props) {
     super(props);
@@ -230,6 +230,7 @@ export class NavBarComponent extends React.Component {
             </div>
           )}
         </section>
+        <SearchContainer />
         <section style={rightBarStyle}>
           {!this.props.currentUser && (
             <div
