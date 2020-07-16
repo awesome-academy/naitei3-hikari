@@ -2,14 +2,14 @@ import React, {Component} from 'react';
 
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import { connect } from 'react-redux'
-import { login } from '../../services/authentication/actions'
+import { login } from '../../services/authentications/actions'
 class Samplepage extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
             style: {},
-            email: '',
+            username: '',
             password: ''
         };
     }
@@ -23,12 +23,18 @@ class Samplepage extends Component {
     }
     onSubmit= e => {
         e.preventDefault();
-        this.props.login({email: this.state.email, password: this.state.password}).then(()=> {
+        const data = {
+            user: {
+                username: this.state.username,
+                password: this.state.password
+            }
+        }
+        this.props.login(data).then(()=> {
             this.props.history.push("/admin/dashboard")
         })
         .catch(err => {
             console.log(err)
-            document.getElementsByClassName("wrong_password").style.display = 'block'
+            document.getElementsByClassName("wrong_password")[0].style.display = 'block'
         })
     }
     render() {
@@ -83,13 +89,13 @@ class Samplepage extends Component {
                                     <div className="auth-innerright">
                                         <div className="authentication-box">
                                             <h4>LOGIN</h4>
-                                            <h6>Enter your Email and Password For Login or Signup</h6>
+                                            <h6>Enter your Username and Password For Login or Signup</h6>
                                             <p className="wrong_password" style={{color: 'red', display: 'none'}}><strong>Wrong Password</strong></p>
                                             <div className="card mt-4 p-4 mb-0">
                                                 <Form className="theme-form" onSubmit={this.onSubmit} >
                                                     <div className="form-group">
-                                                        <label className="col-form-label pt-0">Your Email</label>
-                                                        <input onChange={this.onChange} name="email" required type="text" className="form-control form-control-lg"/>
+                                                        <label className="col-form-label pt-0">Your username</label>
+                                                        <input onChange={this.onChange} name="username" required type="text" className="form-control form-control-lg"/>
                                                     </div>
                                                     <div className="form-group">
                                                         <label className="col-form-label">Password</label>

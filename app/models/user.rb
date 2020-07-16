@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  enum role: {user: 0, admin: 1}
   has_one :stream, dependent: :destroy
   has_many :media, as: :object, dependent: :destroy
   has_many :categories, through: :media, dependent: :destroy

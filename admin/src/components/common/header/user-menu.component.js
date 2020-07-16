@@ -1,16 +1,17 @@
 import React, {Component} from 'react';
-
-// Import authService
-
+import { connect } from 'react-redux';
+import { logout } from '../../../services/authentications/actions'
+import { withRouter } from 'react-router'
 class UserMenu extends Component {
 
     logOut(e) {
         e.preventDefault();
-        this.props.actions.logout();
+        this.props.logout();
+        this.props.history.push("/admin/login");
     }
 
     render() {
-
+        console.log(this.props)
         return (
             <li className="onhover-dropdown">
                 <div className="media  align-items-center">
@@ -59,5 +60,9 @@ class UserMenu extends Component {
     }
 }
 
-
-export default UserMenu
+const mdp = dispatch => {
+    return {
+        logout: () => dispatch(logout())
+    }
+}
+export default withRouter(connect(null, mdp)(UserMenu));
