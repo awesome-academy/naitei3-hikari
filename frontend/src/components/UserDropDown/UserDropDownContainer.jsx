@@ -7,7 +7,8 @@ import { logout } from '../../actions/user_actions';
 const mapStateToProps = (state, ownProps) => {
   return {
     currentUser: state.entities.users[state.session.id],
-    userDropDownStatus: state.ui.userDropDown.status
+    userDropDownStatus: state.ui.userDropDown.status,
+    chatClient: state.chat.chat_client
   }
 }
 

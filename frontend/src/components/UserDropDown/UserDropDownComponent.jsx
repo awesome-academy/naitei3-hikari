@@ -34,6 +34,7 @@ export class UserDropDownComponent extends React.Component {
   handleLogOut() {
     this.props.toggleUserDrop(!this.props.userDropDownStatus);
     this.props.logout();
+    this.props.chatClient.setAnonymousUser();
   }
   handleProfileSwitch() {
     this.props.toggleUserDrop(!this.props.userDropDownStatus);

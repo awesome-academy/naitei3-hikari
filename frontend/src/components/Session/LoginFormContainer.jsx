@@ -8,7 +8,8 @@ const mapStateToProps = (state, ownProps) => {
   return {
     errors: state.errors,
     formType: 'login',
-    loggedIn: state.session.id !== null ? true : false
+    loggedIn: state.session.id !== null ? true : false,
+    chatClient: state.chat.chat_client
   }
 };
 
