@@ -1,0 +1,8 @@
+export const LOG_IN_SUCCESS = 'LOG_IN_SUCCESS';
+export const LOG_IN_FAILURE = 'LOG_IN_FAILURE';
+export const LOG_OUT = 'LOG_OUT';
+export const START_PROCESSING = 'START_PROCESSING';
+export const FINISH_PROCESSING = 'FINISH_PROCESSING';
+export const CLEAR_ERRORS = 'CLEAR_ERRORS';
+export const GET_USER_SUCCESS = 'GET_USER_SUCCESS';
+export const GET_USER_FAILURE = 'GET_USER_FAILURE';
