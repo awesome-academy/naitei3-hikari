@@ -4,6 +4,22 @@ import './effects.css'
 export class SideBarComponent extends React.Component {
   constructor(props) {
     super(props);
+    this.handleFollowClick = this.handleFollowClick.bind(this);
+  }
+
+  handleFollowClick(followee_name) {
+    return () => {
+      // if (this.props.location.pathname === `/${destination}`) return;
+      if (this.props.location.pathname === `/users/${followee_name}/`)
+        return;
+      this.props.history.push(`/users/${followee_name}/`);
+    }
+  }
+
+  componentDidMount() {
+    this.sendObj = Object.assign({}, this.props.currentUser);
+    this.sendObj.follow = 'follower';
+    this.props.showFollows(this.sendObj);
   }
 
   render() {
@@ -70,7 +86,22 @@ export class SideBarComponent extends React.Component {
               </div>
             </div>
           }
-          
+          { (this.props.currentUser && followings.length >= 1) && followings }
+          { (!this.props.currentUser || followings.length < 1) &&
+            <div style={UsersSection}>
+              <div style={section}>
+                <div style={recommendedIcon}>
+                  
+                </div>
+              </div>
+              <div style={regularIcon}></div>
+              <div style={regularIcon}></div>
+              <div style={regularIcon}></div>
+              <div style={regularIcon}></div>
+              <div style={regularIcon}></div>
+              <div style={regularIcon}></div>
+            </div>
+          }
         </div>
       </div>
     )

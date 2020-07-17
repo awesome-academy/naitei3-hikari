@@ -71,3 +71,27 @@ export const fetchCategory = (title) => {
     method: 'GET'
   })
 }
+
+export const postFollow = (follow) => {
+  return $.ajax({
+    url: `${apiHost}/api/v1/following`,
+    method: 'POST',
+    data: { follow }
+  })
+}
+
+export const getFollows = (user) => {
+  return $.ajax({
+    url: `${apiHost}/api/v1/following/${user.id}`,
+    method: 'POST',
+    data: { user }
+  })
+}
+
+export const deleteFollow = (follow) => {
+  return $.ajax({
+    url: `${apiHost}/api/v1/following/0`,
+    method: 'DELETE',
+    data: { follow }
+  })
+}
