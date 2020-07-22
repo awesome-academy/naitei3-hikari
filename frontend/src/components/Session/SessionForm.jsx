@@ -63,6 +63,12 @@ class SessionForm extends React.Component {
           this.sendObj = Object.assign({}, action.user);
           this.sendObj.follow = 'follower';
           this.props.showFollows(this.sendObj);
+          this.props.chatClient.disconnect();
+          this.props.chatClient.setUser(
+            {id: action.user.id,
+            name: action.user.username,
+            picture: action.user.picture
+          })
         }
       })
       .fail(() => {

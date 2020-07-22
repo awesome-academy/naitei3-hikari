@@ -12,6 +12,7 @@ const mapStateToProps = (state, ownProps) => {
     modalStatus: state.ui.modal,
     state: state,
     userDropDownStatus: state.ui.userDropDown.status,
+    chatClient: state.chat.chatClient
   }
 }
 const mapDispatchToProps = dispatch => {

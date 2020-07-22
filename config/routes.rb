@@ -5,6 +5,7 @@ Rails.application.routes.draw do
       resources :users, only: [:index, :create]
       resources :categories, only: :index
       resources :following, only: [:create, :destroy]
+      
       post "/following/:id", to: "following#show"
       get "/categories/:title", to: "categories#show"
       get "/users/:username", to: "users#show"

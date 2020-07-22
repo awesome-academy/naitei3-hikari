@@ -11,6 +11,7 @@ gem "puma", "~> 4.1"
 gem "rack-cors"
 gem "rails", "~> 6.0.3", ">= 6.0.3.2"
 gem "simple_command"
+gem "stream-chat-ruby"
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]

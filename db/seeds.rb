@@ -29,7 +29,8 @@ categories = Category.create [{title: "PUBG", picture: "https://lehoanglan.s3-ap
                               {title: "Call of duty: WW2", picture: "https://lehoanglan.s3-ap-northeast-1.amazonaws.com/Hikari/images/category_cod.jpeg"},
                               {title: "Battlefield 1", picture: "https://lehoanglan.s3-ap-northeast-1.amazonaws.com/Hikari/images/category_bf1.jpeg"},
                               {title: "touhou", picture: "https://lehoanglan.s3-ap-northeast-1.amazonaws.com/Hikari/images/category_touhou.jpg"},
-                              {title: "Diablo 3", picture: "https://lehoanglan.s3-ap-northeast-1.amazonaws.com/Hikari/images/category_diablo.png"}]
+                              {title: "Diablo 3", picture: "https://lehoanglan.s3-ap-northeast-1.amazonaws.com/Hikari/images/category_diablo.png"},
+                              {title: "Grimdawn", picture: "https://lehoanglan.s3-ap-northeast-1.amazonaws.com/Hikari/images/capsule_616x353.jpg"}]
 (0..8).each do |i|
   streams[i].media.build category_id: i
   streams[i].save

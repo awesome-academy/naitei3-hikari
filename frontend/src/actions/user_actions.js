@@ -49,6 +49,7 @@ export const login = formUser => dispatch =>
   postSession(formUser)
   .then(user => {
     localStorage.setItem("auth_token", user.user.auth_token)
+    localStorage.setItem("chat_token", user.user.chat_token)
     dispatch(receiveCurrentUser(user))
   })
   .fail(data => console.log(data));

@@ -3,7 +3,8 @@ class Api::V1::SessionController < ApplicationController
 
   def sign_in
     command = AuthenticateUser.call(params[:user][:username],
-                                    params[:user][:password])
+                                    params[:user][:password],
+                                    @client)
     if command.success?
       render json: {user: command.result}
     else

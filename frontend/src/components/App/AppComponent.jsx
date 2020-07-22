@@ -38,8 +38,8 @@ export class AppComponent extends React.Component {
     return (
       <div style={base} onClick={this.toggleUserDrop} id="base"> 
         {this.props.modalStatus         && <LoginModalContainer /> }
-        {this.props.userDropDownStatus  && <UserDropDownContainer />}
-        <NavBarContainer />
+        {this.props.userDropDownStatus  && <UserDropDownContainer chatClient={this.props.chatClient} />}
+        <NavBarContainer chatClient={this.props.chatClient} />
         <div style={MainDiv} id="mainAppComp">
           <SideBarContainer />
           <MainBarContainer />

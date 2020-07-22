@@ -1,6 +1,7 @@
 import React from 'react';
 import startup from './mediaSource';
 import './effects.css';
+import ChatContainer from '../Chat/ChatContainer';
 
 class Video extends React.Component {
   constructor(props) {
@@ -102,8 +103,10 @@ class Video extends React.Component {
     // const parentStyles = document.getElementById('mainContainer')//.getBoundingClientRect();
     // console.log(parentStyles);
     const maxHeight = window.innerHeight - 20 - 98 - 25;
+    const displayFlex = {
+      display: 'flex'
+    }
     const videoContainer = {
-      zIndex: '97',
       width: '100%',
       maxHeight: `${maxHeight}px`,
       backgroundImage: this.background,
@@ -113,9 +116,14 @@ class Video extends React.Component {
     const videoStyle = {
       width: '100%',
       maxHeight: `${this.maxSize}`,
+      height: '100%',
       muted: 'true',
       boxSizing: 'border-box'
     };
+
+    const chatStyle = {
+      maxHeight: `${maxHeight}px`
+    }
 
     const streamInfoContainer = {
       width: '100%',
@@ -229,6 +237,7 @@ class Video extends React.Component {
 
     return (
       <div>
+        <div className="display-window" style={displayFlex}>
         <div className="video-box" id="videoContainer" style={videoContainer}>
           <video
             id="videoTag"
@@ -241,6 +250,8 @@ class Video extends React.Component {
             muted={true}
             // onClick={this.retry(true)}
           />
+        </div>
+        {this.props.channelUser && <ChatContainer user={this.props.currentUser ? this.props.currentUser : null} channel={this.props.channelUser} style={chatStyle} /> }
         </div>
         <div style={streamInfoContainer}>
           <div style={streamInfoImage}>
@@ -297,21 +308,9 @@ class Video extends React.Component {
             this.props.currentUser.id == this.props.channelUser.id && (
               <div style={debugInfo}>
                 <h3 style={debugTitle}>
-                  How to Stream - exactly the same as twitch.tv, just replace
-                  the Stream Key and Server.
+                  Use OBS
                 </h3>
                 <p>
-                  To Stream to the logged in channel, you need an application
-                  such as OBS (Open Broadcasting Software).
-                </p>
-                <p>
-                  OBS will take your input feed and output a data stream that
-                  can be sent over RTMP to my Centos-Linux / DigitalOcean
-                  server.
-                </p>
-                <p>
-                  If you're still following, you can use this to live stream to
-                  the logged in channel:
                   <br />
                   Server: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
