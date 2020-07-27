@@ -23,7 +23,8 @@ Rails.application.configure do
 
     config.cache_store = :null_store
   end
-
+  ENV['API_KEY'] = "kcuzfg7gnc73" 
+  ENV['API_SECRET'] = "ma7b3nxzxvebxysu86rtf8vm2t6qv9fbkkqp9nhawdatpyywnuspgdqeps3xpwey"
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :local
 
