@@ -1,6 +1,6 @@
 class UserSerializer < ActiveModel::Serializer
   attributes :id, :username, :email, :dob, :picture, :stream_title,
-             :stream_category, :stream_key, :tags
+             :stream_category, :stream_key, :tags, :role
 
   def dob
     object.date_of_birth

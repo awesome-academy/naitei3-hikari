@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { Table } from 'reactstrap';
 import Breadcrumb from '../../common/breadcrumb.component'
-import { getUser } from '../../../services/authentication/actions'
+import { getUser } from '../../../services/authentications/actions'
 import { connect } from 'react-redux'
 import Order from './order'
 class Orders extends Component {
