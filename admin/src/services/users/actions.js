@@ -9,7 +9,6 @@ export const addUser = user => dispatch => new Promise((resolve, reject)=> {
             resolve();
         })
         .catch(err => {
-            console.log(err)
             dispatch({ type: types.ERRORS, errors: err})
             reject();
         })
