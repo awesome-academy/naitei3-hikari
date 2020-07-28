@@ -11,7 +11,6 @@ class UserMenu extends Component {
     }
 
     render() {
-        console.log(this.props)
         return (
             <li className="onhover-dropdown">
                 <div className="media  align-items-center">
