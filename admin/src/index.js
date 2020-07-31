@@ -13,9 +13,8 @@ import store from './services/store';
 import App from './components/app';
 import LoginPage from './components/pages/login';
 import Dashboard from './components/dashboard/ecommerce/index.component';
-import ProductList from './components/applications/ecommerce/product-list';
-import NewProduct from './components/applications/ecommerce/new-product';
-import OrderList from './components/applications/ecommerce/order-list';
+import UserList from './components/applications/ecommerce/user-list';
+import NewUser from './components/applications/ecommerce/new-user';
 
 class Root extends React.Component {
 
@@ -31,12 +30,8 @@ class Root extends React.Component {
 
                     <App>
                         <Route path={`${process.env.PUBLIC_URL}/admin/dashboard`} component={Dashboard} />
-
-                        <Route exact path={`${process.env.PUBLIC_URL}/admin/products`} component={ProductList} />
-                        <Route exact path={`${process.env.PUBLIC_URL}/admin/products/new`} component={NewProduct} />
-
-                        <Route path={`${process.env.PUBLIC_URL}/admin/orders`} component={OrderList} />
-
+                        <Route exact path={`${process.env.PUBLIC_URL}/admin/users`} component={UserList} />
+                        <Route exact path={`${process.env.PUBLIC_URL}/admin/users/new`} component={NewUser} />
                     </App>
 
                     </Switch>

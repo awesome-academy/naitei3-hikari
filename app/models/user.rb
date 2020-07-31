@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  acts_as_paranoid
   enum role: {user: 0, admin: 1}
   has_one :stream, dependent: :destroy
   has_many :media, as: :object, dependent: :destroy
@@ -10,6 +11,7 @@ class User < ApplicationRecord
     source: :follower, dependent: :destroy
   has_secure_password
   scope :lastest, ->{order created_at: :desc}
+  validates :username, uniqueness: true
 
   def self.find_following id
     find_by id: id
