@@ -40,5 +40,13 @@ module Hikari
         ENV[key.to_s] = value
       end if File.exists?(env_file)
     end
-  end
+
+    config.generators do |g|
+       g.test_framework :rspec,
+       fixtures: false,
+       view_specs: false,
+         helper_specs: false,
+      routing_specs: false
+       end
+    end
 end
